@@ -1,19 +1,16 @@
-# Bidhyarthisewa.com
-A E-Commerce Platform for Students
+# Bidhyarthisewa.com AI
 
 ### Technology Used
-1. React JS, Next JS, Tailwind CSS
-2. Spring Boot, REST API
+1. Anaconda
+2. Spider
 3. Python
 
-### Features that must be added
+<!-- ### Features that must be added
 1. Order Management System from scratch
 2. Khalti Payment Gateway to be integrated
-3. Recommendation System on the basis of content and ratings
+3. Recommendation System on the basis of content and ratings -->
 
 ### Project Members
-1. Bibek Dhakal
-2. Bikram Pun
-3. Milan Kharel
+1. Milan Kharel
 
 
