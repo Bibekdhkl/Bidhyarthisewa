@@ -42,10 +42,10 @@ export default function Signup() {
                   // addresses: [],
                   // role: "user",
 
-                  fullName: data.fullName, // Add the fullName field
+                  name: data.name, // Add the name field
                   email: data.email,
                   password: data.password,
-                  contactNumber: data.contactNumber,
+                  // contactNumber: data.contactNumber,
                   //TODO: this role can be directly given on backend
                 })
               );
@@ -54,22 +54,22 @@ export default function Signup() {
           >
             <div>
               <label
-                htmlFor="fullName"
+                htmlFor="name"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Full Name
               </label>
               <div className="mt-2">
                 <input
-                  id="fullName"
-                  {...register("fullName", {
+                  id="name"
+                  {...register("name", {
                     required: "Full Name is required",
                   })}
                   type="text"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-800 sm:text-sm sm:leading-6"
                 />
-                {errors.fullName && (
-                  <p className="text-red-500">{errors.fullName.message}</p>
+                {errors.name && (
+                  <p className="text-red-500">{errors.name.message}</p>
                 )}
               </div>
             </div>

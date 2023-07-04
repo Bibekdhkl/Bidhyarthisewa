@@ -1,10 +1,11 @@
+const BASE_URL = "http://localhost:3000"
 
 export function createUser(userData) {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/auth/signup', {
+    const response = await fetch(`${BASE_URL}/v1/signup/basic`, {
       method: 'POST',
       body: JSON.stringify(userData),
-      headers: { 'content-type': 'application/json' },
+      headers: { 'content-type': 'application/json', 'x-api-key':"GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj" },
     });
     const data = await response.json();
     // TODO: on server it will only return some info of user (not password)
@@ -15,10 +16,10 @@ export function createUser(userData) {
 export function loginUser(loginInfo) {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://localhost:8080/auth/login', {
+      const response = await fetch(`${BASE_URL}/v1/login/basic`, {
         method: 'POST',
         body: JSON.stringify(loginInfo),
-        headers: { 'content-type': 'application/json' },
+        headers: { 'content-type': 'application/json','x-api-key':"GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj" },
       });
       if (response.ok) {
         const data = await response.json();
