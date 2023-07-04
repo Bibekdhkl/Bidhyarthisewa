@@ -1,5 +1,5 @@
 {
-  "name": "amazon-ecommerce-clone-backend",
+  "name": "ecommerce-backend",
   "version": "1.0.0",
   "description": "The nodejs backend application for e-commerce. It is build on top of expressjs using typescript.",
   "main": "index.js",

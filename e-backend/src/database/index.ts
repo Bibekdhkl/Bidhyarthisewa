@@ -18,7 +18,7 @@ const options = {
   socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
 };
 
-console.log(dbURI);
+//console.log(dbURI);
 
 // dotenv.config();
 
