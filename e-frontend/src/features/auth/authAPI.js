@@ -39,7 +39,8 @@ export function loginUser(loginInfo) {
 export function checkAuth() {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://localhost:8080/auth/check');
+      // 'http://localhost:8080/auth/check'
+      const response = await fetch(`${BASE_URL}/v1/check/basic`);
       if (response.ok) {
         const data = await response.json();
         resolve({ data });
