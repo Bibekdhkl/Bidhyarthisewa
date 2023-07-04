@@ -26,7 +26,7 @@ export default function Login() {
 
   //when component loads
   useEffect(() => {
-    userRef.current.focus();
+    if (userRef.current) userRef.current.focus();
   }, []);
 
   useEffect(() => {

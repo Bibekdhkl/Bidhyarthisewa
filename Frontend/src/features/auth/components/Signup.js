@@ -174,7 +174,7 @@ export default function Signup() {
                   {...register("contactNumber", {
                     required: "Contact number is required",
                     pattern: {
-                      value: /^d{10,}[0-9]+$/,
+                      value: /^[0-9]+$/,
                       message:
                         "Contact number must contain only numeric values and need to be 10 digit or more",
                     },
