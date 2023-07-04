@@ -45,14 +45,14 @@ export default function Signup() {
                   // addresses: [],
                   // role: "user",
 
-                  fullName: data.fullName, // Add the fullName field
+                  name: data.name, // Add the name field
                   email: data.email,
                   password: data.password,
-                  contactNumber: data.contactNumber,
+                  // contactNumber: data.contactNumber,
                   // gender: data.gender,
                   // collegeName: data.collegeName,
-                  addresses: [],
-                  role: "user",
+                  // addresses: [],
+                  // role: "user",
                 })
               );
               console.log(data);
@@ -60,22 +60,22 @@ export default function Signup() {
           >
             <div>
               <label
-                htmlFor="fullName"
+                htmlFor="name"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Full Name
               </label>
               <div className="mt-2">
                 <input
-                  id="fullName"
-                  {...register("fullName", {
+                  id="name"
+                  {...register("name", {
                     required: "Full Name is required",
                   })}
                   type="text"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-                {errors.fullName && (
-                  <p className="text-red-500">{errors.fullName.message}</p>
+                {errors.name && (
+                  <p className="text-red-500">{errors.name.message}</p>
                 )}
               </div>
             </div>
@@ -117,13 +117,13 @@ export default function Signup() {
                   id="password"
                   {...register("password", {
                     required: "Password is required",
-                    pattern: {
-                      value:
-                        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
-                      message: `- At least 8 characters\n
-                      - Must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number\n
-                      - Can contain special characters`,
-                    },
+                    // pattern: {
+                    //   value:
+                    //     /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
+                    //   message: `- At least 8 characters\n
+                    //   - Must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number\n
+                    //   - Can contain special characters`,
+                    // },
                   })}
                   type="password"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -161,7 +161,7 @@ export default function Signup() {
               </div>
             </div>
 
-            <div>
+            {/* <div>
               <label
                 htmlFor="contactNumber"
                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -186,7 +186,7 @@ export default function Signup() {
                   <p className="text-red-500">{errors.contactNumber.message}</p>
                 )}
               </div>
-            </div>
+            </div> */}
 
             {/* <div>
               <label
