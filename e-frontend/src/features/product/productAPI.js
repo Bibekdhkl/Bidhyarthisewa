@@ -1,9 +1,17 @@
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = "http://localhost:3000";
 
-// export 
+export function fetch(id) {
+  return new Promise(async (resolve) => {
+    //TODO: we will not hard-code server URL here
+    //`${BASE_URL}/products/` -> 'http://localhost:8080/products/
+    const response = await fetch(`${BASE_URL}/v1/product/` + id);
+    const data = await response.json();
+    resolve({ data });
+  });
+}
 
 export function fetchProductById(id) {
-  return new Promise(async (resolve) => { 
+  return new Promise(async (resolve) => {
     //TODO: we will not hard-code server URL here
     //`${BASE_URL}/products/` -> 'http://localhost:8080/products/
     const response = await fetch(`${BASE_URL}/v1/product/` + id);
@@ -16,9 +24,12 @@ export function createProduct(product) {
   return new Promise(async (resolve) => {
     // const response = await fetch('http://localhost:8080/products/', {
     const response = await fetch(`${BASE_URL}/v1/product/`, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(product),
-      headers: { 'content-type': 'application/json','x-api-key':"GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj" },
+      headers: {
+        "content-type": "application/json",
+        "x-api-key": "GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj",
+      },
     });
     const data = await response.json();
     resolve({ data });
@@ -27,14 +38,14 @@ export function createProduct(product) {
 
 export function updateProduct(update) {
   return new Promise(async (resolve) => {
-    const response = await fetch(
-      `${BASE_URL}/v1/product/`+ update.id,
-      {
-        method: 'PATCH',
-        body: JSON.stringify(update),
-        headers: { 'content-type': 'application/json' , 'x-api-key':"GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj"},
-      }
-    );
+    const response = await fetch(`${BASE_URL}/v1/product/` + update.id, {
+      method: "PATCH",
+      body: JSON.stringify(update),
+      headers: {
+        "content-type": "application/json",
+        "x-api-key": "GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj",
+      },
+    });
     const data = await response.json();
     // TODO: on server it will only return some info of user (not password)
     resolve({ data });
@@ -48,7 +59,7 @@ export function fetchProductsByFilters(filter, sort, pagination, admin) {
   // TODO : on server we will support multi values in filter
   // TODO : Server will filter deleted products in case of non-admin
 
-  let queryString = '';
+  let queryString = "";
   for (let key in filter) {
     const categoryValues = filter[key];
     if (categoryValues.length) {
@@ -62,24 +73,24 @@ export function fetchProductsByFilters(filter, sort, pagination, admin) {
   for (let key in pagination) {
     queryString += `${key}=${pagination[key]}&`;
   }
-  if(admin){
+  if (admin) {
     queryString += `admin=true`;
   }
 
   return new Promise(async (resolve) => {
     //TODO: we will not hard-code server URL here
     const response = await fetch(
-      'http://localhost:3000/products?' + queryString
+      "http://localhost:3000/products?" + queryString
     );
     const data = await response.json();
-    const totalItems = await response.headers.get('X-Total-Count');
+    const totalItems = await response.headers.get("X-Total-Count");
     resolve({ data: { products: data, totalItems: +totalItems } });
   });
 }
 
 export function fetchCategories() {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/categories');
+    const response = await fetch("http://localhost:8080/categories");
     const data = await response.json();
     resolve({ data });
   });
@@ -87,7 +98,7 @@ export function fetchCategories() {
 
 export function fetchBrands() {
   return new Promise(async (resolve) => {
-    const response = await fetch('http://localhost:8080/brands');
+    const response = await fetch("http://localhost:8080/brands");
     const data = await response.json();
     resolve({ data });
   });
