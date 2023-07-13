@@ -18,6 +18,15 @@ const initialState = {
   selectedProduct: null,
 };
 
+export const fetchAllProductsAsync = createAsyncThunk(
+  'product/fetchAllProducts',
+  async ({pageNumber, pageItemCount}) => {
+    console.log(pageNumber, pageItemCount)
+    const response = await fetchAllProducts(pageNumber, pageItemCount);
+    // console.log(response)
+    return response.data;
+  }
+);
 
 export const fetchProductByIdAsync = createAsyncThunk(
   'product/fetchProductById',
@@ -80,6 +89,10 @@ export const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchAllProductsAsync.pending, (state) => {
+        // console.log(state)
+        state.status = 'loading';
+      })
       .addCase(fetchProductsByFiltersAsync.pending, (state) => {
         state.status = 'loading';
       })

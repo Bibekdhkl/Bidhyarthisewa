@@ -1,10 +1,19 @@
 const BASE_URL = "http://localhost:3000";
 
-export function fetch(id) {
+export function fetchAllProducts(pageNumber, pageItemCount) {
   return new Promise(async (resolve) => {
     //TODO: we will not hard-code server URL here
     //`${BASE_URL}/products/` -> 'http://localhost:8080/products/
-    const response = await fetch(`${BASE_URL}/v1/product/` + id);
+    const response = await fetch(
+      `${BASE_URL}/v1/product?pageNumber=${pageNumber}&pageItemCount=${pageItemCount}`,
+      {
+        headers: {
+          "x-api-key": "GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj",
+          authorization:
+            "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJlLWNvbW1lcmNlLmNvbSIsImF1ZCI6ImUtY29tbWVyY2UuY29tIiwic3ViIjoiNjRhNDViMjg1ZTY5NjAzMGM0MjBlMTc1IiwiaWF0IjoxNjg4NTMzMDcwLCJleHAiOjE2OTg5MDEwNzB9.F6G-csnBukkS6MGJU0pkTnE9BdiwVCa7vsm2V_2MQWxBeZKq8YGfeHtpBy1BaCrX8ssJVetCkGlnIWcwW5NioAbwvchmHxY9UFTgO9oJ4oXc4NMIlIBikFoQPRydjUc6Va-wGVXoIuyPaT2EFcRcaYM_9X3pnzIHzl-2sfT8qdc",
+        },
+      }
+    );
     const data = await response.json();
     resolve({ data });
   });
@@ -90,7 +99,15 @@ export function fetchProductsByFilters(filter, sort, pagination, admin) {
 
 export function fetchCategories() {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/categories");
+    const response = await fetch("http://localhost:3000/v1/category",
+    {
+      headers: {
+        "x-api-key": "GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj",
+        authorization:
+          "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJlLWNvbW1lcmNlLmNvbSIsImF1ZCI6ImUtY29tbWVyY2UuY29tIiwic3ViIjoiNjRhNDViMjg1ZTY5NjAzMGM0MjBlMTc1IiwiaWF0IjoxNjg4NTMzMDcwLCJleHAiOjE2OTg5MDEwNzB9.F6G-csnBukkS6MGJU0pkTnE9BdiwVCa7vsm2V_2MQWxBeZKq8YGfeHtpBy1BaCrX8ssJVetCkGlnIWcwW5NioAbwvchmHxY9UFTgO9oJ4oXc4NMIlIBikFoQPRydjUc6Va-wGVXoIuyPaT2EFcRcaYM_9X3pnzIHzl-2sfT8qdc",
+      },
+      }
+      );
     const data = await response.json();
     resolve({ data });
   });
@@ -98,7 +115,7 @@ export function fetchCategories() {
 
 export function fetchBrands() {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/brands");
+    const response = await fetch("http://localhost:3000/brands");
     const data = await response.json();
     resolve({ data });
   });

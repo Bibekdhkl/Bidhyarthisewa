@@ -16,6 +16,7 @@ export function createUser(userData) {
 export function loginUser(loginInfo) {
   return new Promise(async (resolve, reject) => {
     try {
+      console.log("Message")
       const response = await fetch(`${BASE_URL}/v1/login/basic`, {
         method: 'POST',
         body: JSON.stringify(loginInfo),
