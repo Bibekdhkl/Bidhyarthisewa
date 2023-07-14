@@ -3,7 +3,7 @@ import {
   clearSelectedProduct,
   createProductAsync,
   fetchProductByIdAsync,
-  selectBrands,
+  // selectBrands,
   selectCategories,
   selectProductById,
   updateProductAsync,
@@ -22,7 +22,7 @@ function ProductForm() {
     reset,
     formState: { errors },
   } = useForm();
-  const brands = useSelector(selectBrands);
+  // const brands = useSelector(selectBrands);
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
   const params = useParams();
@@ -149,7 +149,7 @@ function ProductForm() {
               </p>
             </div>
 
-            <div className="col-span-full">
+            {/* <div className="col-span-full">
               <label
                 htmlFor="brand"
                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -168,7 +168,7 @@ function ProductForm() {
                   ))}
                 </select>
               </div>
-            </div>
+            </div> */}
 
             <div className="col-span-full">
               <label

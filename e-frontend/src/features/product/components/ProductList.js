@@ -2,11 +2,11 @@ import React, { useState, Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchAllProductsAsync,
-  fetchBrandsAsync,
+  // fetchBrandsAsync,
   fetchCategoriesAsync,
   fetchProductsByFiltersAsync,
   selectAllProducts,
-  selectBrands,
+  // selectBrands,
   selectCategories,
   selectProductListStatus,
   selectTotalItems,
@@ -44,7 +44,7 @@ function classNames(...classes) {
 export default function ProductList() {
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
-  const brands = useSelector(selectBrands);
+  // const brands = useSelector(selectBrands);
   const categories = useSelector(selectCategories);
   const totalItems = useSelector(selectTotalItems);
   const status = useSelector(selectProductListStatus);
@@ -104,13 +104,13 @@ export default function ProductList() {
   //   // TODO : Server will filter deleted products
   // }, [dispatch, filter, sort, page]);
 
-  // useEffect(() => {
-  //   setPage(1);
-  // }, [totalItems, sort]);
+  useEffect(() => {
+    setPage(1);
+  }, [totalItems, sort]);
 
   useEffect(() => {
     dispatch(fetchAllProductsAsync({ pageNumber: 1, pageItemCount: 5 }));
-    dispatch(fetchBrandsAsync());
+    // dispatch(fetchBrandsAsync());
     dispatch(fetchCategoriesAsync());
   }, []);
 

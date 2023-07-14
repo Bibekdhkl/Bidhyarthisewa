@@ -113,10 +113,10 @@ export function fetchCategories() {
   });
 }
 
-export function fetchBrands() {
-  return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:3000/brands");
-    const data = await response.json();
-    resolve({ data });
-  });
-}
+// export function fetchBrands() {
+//   return new Promise(async (resolve) => {
+//     const response = await fetch("http://localhost:3000/brands");
+//     const data = await response.json();
+//     resolve({ data });
+//   });
+// }

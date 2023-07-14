@@ -1,11 +1,11 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  fetchBrandsAsync,
+  // fetchBrandsAsync,
   fetchCategoriesAsync,
   fetchProductsByFiltersAsync,
   selectAllProducts,
-  selectBrands,
+  // selectBrands,
   selectCategories,
   selectTotalItems,
 } from '../../product/productSlice';
@@ -39,7 +39,7 @@ function classNames(...classes) {
 export default function AdminProductList() {
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
-  const brands = useSelector(selectBrands);
+  // const brands = useSelector(selectBrands);
   const categories = useSelector(selectCategories);
   const totalItems = useSelector(selectTotalItems);
   const filters = [
@@ -48,11 +48,11 @@ export default function AdminProductList() {
       name: 'Category',
       options: categories,
     },
-    {
-      id: 'brand',
-      name: 'Brands',
-      options: brands,
-    },
+    // {
+    //   id: 'brand',
+    //   name: 'Brands',
+    //   options: brands,
+    // },
   ];
 
   const [filter, setFilter] = useState({});
@@ -101,7 +101,7 @@ export default function AdminProductList() {
   }, [totalItems, sort]);
 
   useEffect(() => {
-    dispatch(fetchBrandsAsync());
+    // dispatch(fetchBrandsAsync());
     dispatch(fetchCategoriesAsync());
   }, []);
 

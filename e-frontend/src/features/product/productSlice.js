@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {
   fetchAllProducts,
   fetchProductsByFilters,
-  fetchBrands,
+  // fetchBrands,
   fetchCategories,
   fetchProductById,
   createProduct,
@@ -11,7 +11,7 @@ import {
 
 const initialState = {
   products: [],
-  brands: [],
+  // brands: [],
   categories: [],
   status: 'idle',
   totalItems: 0,
@@ -46,14 +46,14 @@ export const fetchProductsByFiltersAsync = createAsyncThunk(
   }
 );
 
-export const fetchBrandsAsync = createAsyncThunk(
-  'product/fetchBrands',
-  async () => {
-    const response = await fetchBrands();
-    // The value we return becomes the `fulfilled` action payload
-    return response.data;
-  }
-);
+// export const fetchBrandsAsync = createAsyncThunk(
+//   'product/fetchBrands',
+//   async () => {
+//     const response = await fetchBrands();
+//     // The value we return becomes the `fulfilled` action payload
+//     return response.data;
+//   }
+// );
 export const fetchCategoriesAsync = createAsyncThunk(
   'product/fetchCategories',
   async () => {
@@ -101,13 +101,13 @@ export const productSlice = createSlice({
         state.products = action.payload.products;
         state.totalItems = action.payload.totalItems;
       })
-      .addCase(fetchBrandsAsync.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchBrandsAsync.fulfilled, (state, action) => {
-        state.status = 'idle';
-        state.brands = action.payload;
-      })
+      // .addCase(fetchBrandsAsync.pending, (state) => {
+      //   state.status = 'loading';
+      // })
+      // .addCase(fetchBrandsAsync.fulfilled, (state, action) => {
+      //   state.status = 'idle';
+      //   state.brands = action.payload;
+      // })
       .addCase(fetchCategoriesAsync.pending, (state) => {
         state.status = 'loading';
       })
@@ -147,7 +147,7 @@ export const productSlice = createSlice({
 export const { clearSelectedProduct } = productSlice.actions;
 
 export const selectAllProducts = (state) => state.product.products;
-export const selectBrands = (state) => state.product.brands;
+// export const selectBrands = (state) => state.product.brands;
 export const selectCategories = (state) => state.product.categories;
 export const selectProductById = (state) => state.product.selectedProduct;
 export const selectProductListStatus = (state) => state.product.status;
