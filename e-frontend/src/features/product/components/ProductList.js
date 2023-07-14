@@ -109,7 +109,7 @@ export default function ProductList() {
   // }, [totalItems, sort]);
 
   useEffect(() => {
-    dispatch(fetchAllProductsAsync({ pageNumber: 1, pageItemCount: 1 }));
+    dispatch(fetchAllProductsAsync({ pageNumber: 1, pageItemCount: 5 }));
     dispatch(fetchBrandsAsync());
     dispatch(fetchCategoriesAsync());
   }, []);
@@ -196,7 +196,7 @@ export default function ProductList() {
 
           <section aria-labelledby="products-heading" className="pb-24 pt-6">
             <h2 id="products-heading" className="sr-only">
-              Products
+              Products Name
             </h2>
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
@@ -387,6 +387,7 @@ function DesktopFilter({ handleFilter, filters }) {
                         <label
                           htmlFor={`filter-${section.id}-${optionIdx}`}
                           className="ml-3 text-sm text-black-600"
+                          Z
                         >
                           {option.name}
                         </label>

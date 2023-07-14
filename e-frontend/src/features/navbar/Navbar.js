@@ -58,8 +58,8 @@ function NavBar({ children }) {
                                 to={item.link}
                                 className={classNames(
                                   item.current
-                                    ? "bg-gray-900 text-white"
-                                    : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                    ? "bg-black-900 text-white"
+                                    : "text-black-300 hover:bg-black-700 hover:text-white",
                                   "rounded-md px-3 py-2 text-sm font-medium"
                                 )}
                                 aria-current={item.current ? "page" : undefined}
@@ -76,7 +76,7 @@ function NavBar({ children }) {
                         <Link to="/cart">
                           <button
                             type="button"
-                            className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                            className="rounded-full bg-red-800 p-1 text-white hover:text-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-white-800"
                           >
                             <span className="sr-only">View notifications</span>
                             <ShoppingCartIcon
@@ -94,13 +94,28 @@ function NavBar({ children }) {
                         {/* Profile dropdown */}
                         <Menu as="div" className="relative ml-3">
                           <div>
-                            <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                            <Menu.Button className="flex max-w-xs items-center rounded-full bg-red-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                               <span className="sr-only">Open user menu</span>
-                              <img
+                              {/* <img
                                 className="h-8 w-8 rounded-full"
                                 src={userInfo.imageUrl}
                                 alt=""
-                              />
+                              /> */}
+
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1}
+                                stroke="white"
+                                className="w-auto h-8 hover:stroke-black "
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
+                              </svg>
                             </Menu.Button>
                           </div>
                           <Transition
