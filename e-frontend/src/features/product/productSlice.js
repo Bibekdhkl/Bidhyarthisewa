@@ -21,7 +21,7 @@ const initialState = {
 export const fetchAllProductsAsync = createAsyncThunk(
   'product/fetchAllProducts',
   async ({pageNumber, pageItemCount}) => {
-    console.log(pageNumber, pageItemCount)
+    // console.log(pageNumber, pageItemCount)
     const response = await fetchAllProducts(pageNumber, pageItemCount);
     // console.log(response)
     return response.data;

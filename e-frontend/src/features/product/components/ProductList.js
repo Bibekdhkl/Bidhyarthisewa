@@ -37,6 +37,76 @@ const sortOptions = [
   { name: "Price: High to Low", sort: "price", order: "desc", current: false },
 ];
 
+//---------------------------------------------
+const testProduct = [
+  {
+    _id: "64b038ad90202f309cb1b603",
+    discountPercentage: 20,
+    productMedias: [],
+    name: "Computer Network Guide Book",
+    description: "From stationary",
+    category: {
+      _id: "64a45f265e696030c420e1a5",
+      name: "Books",
+    },
+    price: 600,
+    seller: "64a3e3e7aa00ec39bcc9053e",
+  },
+  {
+    _id: "64b0387590202f309cb1b5fc",
+    discountPercentage: 20,
+    productMedias: [],
+    name: "PQT Note",
+    description: "From stationary",
+    category: {
+      _id: "64a47a80e0cff1311006a924",
+      name: "Notes",
+    },
+    price: 400,
+    seller: "64a3e3e7aa00ec39bcc9053e",
+  },
+  {
+    _id: "64b0383b90202f309cb1b5f5",
+    discountPercentage: 20,
+    productMedias: [],
+    name: "Physics Handwritten Notes",
+    description: "From stationary",
+    category: {
+      _id: "64a47a80e0cff1311006a924",
+      name: "Notes",
+    },
+    price: 400,
+    seller: "64a3e3e7aa00ec39bcc9053e",
+  },
+  {
+    _id: "64b037c490202f309cb1b5ee",
+    discountPercentage: 20,
+    productMedias: [],
+    name: "Scientific Calculator",
+    description: "for Mathematics calculation",
+    category: {
+      _id: "64a47a54e0cff1311006a91e",
+      name: "Instruments",
+    },
+    price: 400,
+    seller: "64a3e3e7aa00ec39bcc9053e",
+  },
+  {
+    _id: "64b0377190202f309cb1b5e7",
+    discountPercentage: 20,
+    productMedias: [],
+    name: "Drawing Board",
+    description: "for drawing tools",
+    category: {
+      _id: "64a47a54e0cff1311006a91e",
+      name: "Instruments",
+    },
+    price: 400,
+    seller: "64a3e3e7aa00ec39bcc9053e",
+  },
+];
+//------------------------------------------------
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -67,7 +137,7 @@ export default function ProductList() {
   const [page, setPage] = useState(1);
 
   const handleFilter = (e, section, option) => {
-    console.log(e.target.checked);
+    // console.log(e.target.checked);
     const newFilter = { ...filter };
     // TODO : on server it will support multiple categories
     if (e.target.checked) {
@@ -82,19 +152,19 @@ export default function ProductList() {
       );
       newFilter[section.id].splice(index, 1);
     }
-    console.log({ newFilter });
+    // console.log({ newFilter });
 
     setFilter(newFilter);
   };
 
   const handleSort = (e, option) => {
     const sort = { _sort: option.sort, _order: option.order };
-    console.log({ sort });
+    // console.log({ sort });
     setSort(sort);
   };
 
   const handlePage = (page) => {
-    console.log({ page });
+    // console.log({ page });
     setPage(page);
   };
 
@@ -418,7 +488,7 @@ function ProductGrid({ products, status }) {
               radius="12.5"
               wrapperStyle={{}}
               wrapperClass=""
-              // visible={true}
+              visible={true}
             />
           ) : (
             products.map((product) => (
