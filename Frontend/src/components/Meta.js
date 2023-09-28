@@ -11,9 +11,9 @@ const Meta = ({ title, description, keywords }) => {
   )
 }
 Meta.defaultProps = {
-  title: 'Sell & Buy Anything ',
+  title: 'Bidhyarthisewa ',
   description:
     'Buy the second hand products at cheap price only on sell anything ',
-  keyword: 'notes, buy electronics, second hand products, ioe, lamachaur sell',
+  keyword: 'notes, buy engineering notes, second hand products, second hand, cheap price',
 }
 export default Meta
