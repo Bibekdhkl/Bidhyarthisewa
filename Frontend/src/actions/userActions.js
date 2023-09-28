@@ -31,6 +31,8 @@ import {
   USER_VERIFICATION_LINK_RESET,
 } from '../types/userConstants'
 
+axios.defaults.baseURL = 'http://localhost:4000';
+
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({

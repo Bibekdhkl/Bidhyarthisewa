@@ -20,6 +20,8 @@ import {
   PRODUCT_REVIEW_SUCCESS,
 } from '../types/productConstants'
 import axios from 'axios'
+
+axios.defaults.baseURL = 'http://localhost:4000';
 // import {
 //   USER_DELETE_FAIL,
 //   USER_DELETE_REQUEST,
