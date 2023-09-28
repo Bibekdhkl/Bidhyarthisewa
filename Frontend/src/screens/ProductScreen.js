@@ -83,10 +83,9 @@ const ProductScreen = ({ match, history }) => {
   }
   return (
     <>
-      <Link to='/' className='btn btn-success my-3'>
+      <Link to='/' className='btn btn-success my-3 mr-5'>
         Go Back
       </Link>
-      <br />
       {userData && userData._id === product.user && (
         <Link
           to={`/admin/product/${match.params.id}/edit`}
@@ -117,7 +116,7 @@ const ProductScreen = ({ match, history }) => {
                 ))}
               </Carousel>
             </Col>
-
+                  {/* First Details */}
             <Col className='borderaround setheight' md={6}>
               <p className='details'>
                 <i className='fas fa-info'></i> General Details
@@ -127,7 +126,6 @@ const ProductScreen = ({ match, history }) => {
                 <Col className='product  ' md={4} sm={4} xs={4}>
                   <ul>
                     <li> Product Id:</li>
-
                     <li> Posted On:</li>
                     <li> Expires On:</li>
                     <li> Product:</li>
@@ -326,7 +324,7 @@ const ProductScreen = ({ match, history }) => {
           </Row>
           <Row className='mt-3'>
             <Col md={6}>
-              <h4>Buyer's Speak</h4>
+              <h4 style={{fontWeight:900}}>Buyer's Opinions</h4>
               {product.reviews.length === 0 && (
                 <Message variant='primary'>Be the First One to Review</Message>
               )}
@@ -348,7 +346,7 @@ const ProductScreen = ({ match, history }) => {
                 ))}
 
                 <ListGroup.Item>
-                  <p>Post Your Speak</p>
+                  <p>Write your Comments Below👇</p>
                   {errorReview && (
                     <Message variant='danger'>{errorReview}</Message>
                   )}
@@ -363,6 +361,7 @@ const ProductScreen = ({ match, history }) => {
                           row='3'
                           value={comment}
                           onChange={(e) => setComment(e.target.value)}
+                          style={{ backgroundColor: '#FECBCA', color: 'black' }}
                         ></Form.Control>
                       </Form.Group>
                       <Button type='submit' variant='primary'>
