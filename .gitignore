@@ -1,1 +1,10 @@
+dist
+private
+src/private
 node_modules
+.env
+.secret.json
+cert.pem
+key.pem
+package-lock.json
+Frontend/package-lock.json
