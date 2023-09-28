@@ -7,12 +7,19 @@ import connectDB from './config/db.js'
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
+import cors from 'cors'
 
 dotenv.config()
 connectDB()
 
 const app = express()
-app.use(express.json())
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200,
+};
+
+app.use(express.json());
+app.use(cors(corsOptions));
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/uploads', uploadRoutes)
