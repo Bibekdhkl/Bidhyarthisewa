@@ -22,7 +22,11 @@ const App = () => {
     <Router>
       <>
         <Header />
-        <CoverImage /> {/* Add the CoverImage component here */}
+        {/* It shows the coverImage only once */}
+        <Route path="/" exact>
+          <CoverImage />
+        </Route>
+        {/* <CoverImage /> Add the CoverImage component here */}
         <main className='py-5'>
           <Container>
             <Switch>

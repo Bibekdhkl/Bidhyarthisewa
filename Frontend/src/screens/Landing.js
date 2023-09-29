@@ -10,6 +10,8 @@ import Paginate from "../components/Paginate";
 import Meta from "../components/Meta";
 import { listProducts } from "../actions/productActions";
 import { PRODUCT_CREATE_RESET } from "../types/productConstants";
+import RecommendedProducts from "../components/RecommendedProducts";
+
 const Landing = ({ match }) => {
   const keyword = match.params.keyword;
   const pageNumber = match.params.pageNumber || 1;
@@ -18,13 +20,26 @@ const Landing = ({ match }) => {
   const { loading, error, products, page, pages } = productList;
   const userLogin = useSelector((state) => state.userLogin);
   const { userData } = userLogin;
+  // const [recommendedProducts, setRecommendedProducts] = useState([]);
 
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET });
 
     dispatch(listProducts(keyword, pageNumber));
+
+    // // Fetch and set the recommended products only once when the component mounts
+    // if (recommendedProducts.length === 0) {
+    //   // Replace this with your logic to fetch recommended products
+    //   const recommendedProductsData = [
+    //     // Your recommended products data goes here
+    //   ];
+
+    // setRecommendedProducts(recommendedProductsData);
+    // }
   }, [dispatch, keyword, pageNumber]);
 
+  
+  
   return (
     <>
       <Meta />
@@ -69,7 +84,15 @@ const Landing = ({ match }) => {
             keyword={keyword ? keyword : ""}
           />
         </>
+        
       )}
+
+       {/* Recommended Products Section
+       <h3 style={{ fontWeight: 800 }}>Recommended Products</h3>
+      <RecommendedProducts products={recommendedProducts} /> */}
+  
+       <h3 style={{ fontWeight: 800, textAlign:"center"}}>👉Recommended/ Featured Section Coming Soon😉</h3>
+  
     </>
   );
 };
