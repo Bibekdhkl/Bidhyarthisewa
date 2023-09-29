@@ -141,7 +141,7 @@ const ProductCreateScreen = ({ history }) => {
             </Form.Group>
 
             <Form.Group controlId="description">
-              <Form.Label>Describe your property </Form.Label>
+              <Form.Label>Describe your Product </Form.Label>
 
               <Form.Control
                 as="textarea"
