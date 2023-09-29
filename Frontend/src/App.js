@@ -1,6 +1,7 @@
 import './App.css'
 import { Container } from 'react-bootstrap'
 import Header from './components/Header'
+import CoverImage from './components/CoverImage'
 import Landing from '../src/screens/Landing'
 import Footer from './components/Footer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -21,7 +22,11 @@ const App = () => {
     <Router>
       <>
         <Header />
-
+        {/* It shows the coverImage only once */}
+        <Route path="/" exact>
+          <CoverImage />
+        </Route>
+        {/* <CoverImage /> Add the CoverImage component here */}
         <main className='py-5'>
           <Container>
             <Switch>

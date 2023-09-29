@@ -118,11 +118,11 @@ const createProduct = asyncHandler(async (req, res) => {
 
   if (product) {
     res.status(201).json({
-      message: 'Your property is successfully listed',
+      message: 'Your Product is successfully listed',
     })
   } else {
     res.status(400)
-    throw new Error('Invalid Property Data')
+    throw new Error('Invalid Product Data')
   }
 })
 

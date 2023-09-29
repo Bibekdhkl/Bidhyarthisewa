@@ -8,6 +8,7 @@ img {
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
+  color: black;
 }
 ::placeholder {
   color: white;
@@ -288,3 +289,37 @@ li {
 .reg-button {
   background-color: red;
 }
+
+.file-background .custom-file-control::before {
+  background-color: rgb(0, 0, 0); /* Set the background color to pink */
+  color: white; /* Set the text color to white */
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #951E19 !important;
+}
+.btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited {
+  background-color: #951E19 !important;
+}
+.btn-info, .btn-info:hover, .btn-info:active, .btn-info:visited {
+  background-color: #951E19 !important;
+}
+.btn-success, .btn-success:hover, .btn-success:active, .btn-success:visited {
+  background-color: #951E19 !important;
+}
+
+.cover-image {
+  /* width: 100%; */
+  max-height: 500px; /* Adjust the height as needed */
+  overflow: hidden;
+  position: relative;
+  padding: 0 100px;
+}
+
+.cover-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* To ensure the image covers the entire space */
+}
+
+
