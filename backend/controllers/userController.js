@@ -7,7 +7,7 @@ import sgMail from '@sendgrid/mail'
 import generateToken from '../utils/generateToken.js'
 import nodemailer from 'nodemailer'
 dotenv.config()
-sgMail.setApiKey(process.env.SEND_GRID_API)
+sgMail.setApiKey(process.env.SEND_GRID_API || "manna")
 
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
@@ -137,43 +137,74 @@ const verificationLink = asyncHandler(async (req, res) => {
   })
 })
 const registerUser = asyncHandler(async (req, res) => {
-  const { token } = req.body
-  if (token) {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    const { name, email, password, contact, address } = decoded
-    const userExists = await User.findOne({ email })
+  // const { token } = req.body
+  // const decoded = jwt.verify(token, process.env.JWT_SECRET)
+  const { name, email, password, contact, address } = req.body
+  const userExists = await User.findOne({ email })
 
-    if (userExists) {
-      res.status(400)
-      throw new Error('You have already been verified')
-    } else {
-      const user = await User.create({
-        name,
-        email,
-        password,
-        contact,
-        address,
-      })
-
-      if (user) {
-        res.status(201).json({
-          _id: user._id,
-          name: user.name,
-          email: user.email,
-          isAdmin: user.isAdmin,
-          token: generateToken(user._id),
-          address: user.address,
-          contact: user.contact,
-        })
-      } else {
-        res.status(400)
-        throw new Error('Invalid User Data')
-      }
-    }
+  if (userExists) {
+    res.status(400)
+    throw new Error('You have already been verified')
   } else {
-    res.status(404)
-    throw new Error('No token found')
+    const user = await User.create({
+      name,
+      email,
+      password,
+      contact,
+      address,
+    })
+
+    if (user) {
+      res.status(201).json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        token: generateToken(user._id),
+        address: user.address,
+        contact: user.contact,
+      })
+    } else {
+      res.status(400)
+      throw new Error('Invalid User Data')
+    }
   }
+  // if (token) {
+  //   const decoded = jwt.verify(token, process.env.JWT_SECRET)
+  //   const { name, email, password, contact, address } = decoded
+  //   const userExists = await User.findOne({ email })
+
+  //   if (userExists) {
+  //     res.status(400)
+  //     throw new Error('You have already been verified')
+  //   } else {
+  //     const user = await User.create({
+  //       name,
+  //       email,
+  //       password,
+  //       contact,
+  //       address,
+  //     })
+
+  //     if (user) {
+  //       res.status(201).json({
+  //         _id: user._id,
+  //         name: user.name,
+  //         email: user.email,
+  //         isAdmin: user.isAdmin,
+  //         token: generateToken(user._id),
+  //         address: user.address,
+  //         contact: user.contact,
+  //       })
+  //     } else {
+  //       res.status(400)
+  //       throw new Error('Invalid User Data')
+  //     }
+  //   }
+  // } else {
+  //   res.status(404)
+  //   throw new Error('No token found')
+  // }
 })
 
 const emailSend = asyncHandler(async (req, res) => {
