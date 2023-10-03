@@ -7,6 +7,7 @@ import {
   createProduct,
   updateProduct,
   reviewProduct,
+  searchProducts,
 } from '../controllers/productController.js'
 import { protect, admin } from '../middleware/authMiddleware.js'
 
@@ -18,5 +19,8 @@ router
   .get(getProductById)
   .delete(protect, admin, deleteProduct)
   .put(protect, updateProduct)
+
+// api/products?keyword=key&pageNumber=1
+router.route('/search/:keyword').get(searchProducts)
 
 export default router

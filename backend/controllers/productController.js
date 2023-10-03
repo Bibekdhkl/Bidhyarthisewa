@@ -30,6 +30,8 @@ const getProducts = asyncHandler(async (req, res) => {
 const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
   if (product) {
+    console.log('=========================')
+    console.log(product)
     res.json(product)
   } else {
     res.status(400).json({ message: 'No product found' })
@@ -192,6 +194,22 @@ const reviewProduct = asyncHandler(async (req, res) => {
   res.status(201).json({ message: 'Review successfully added' })
 })
 
+// api/products?keyword=key&pageNumber=1
+const searchProducts = asyncHandler(async (req, res) => {
+  const { keyword } = req.params
+  console.log("======================")
+  console.log(keyword)
+  // find products that match the keyword
+  // .match(/[a-zA-z](\w+)/g)
+  const products = await Product.find({
+    name: {
+      $regex: new RegExp(`^${keyword}`, 'i'),
+    },
+  });
+  console.log(products)
+  res.json(products)
+})
+
 export {
   getProducts,
   getProductById,
@@ -199,4 +217,5 @@ export {
   createProduct,
   updateProduct,
   reviewProduct,
+  searchProducts,
 }
