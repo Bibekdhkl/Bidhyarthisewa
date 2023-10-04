@@ -81,6 +81,7 @@ const ProductScreen = ({ match, history }) => {
   const cancelHandler = () => {
     setSendMail(false)
   }
+  const [placeholderText, setPlaceholderText] = useState("Hello,\nI'm interested in your product.\nI want the product at the earliest.\nPlease contact me.\nAlso, if possible, can you decrease the price by Rs. 100.\nThank You.");
   return (
     <>
       <Link to='/' className='btn btn-success my-3 mr-5'>
@@ -125,7 +126,7 @@ const ProductScreen = ({ match, history }) => {
               <Row>
                 <Col className='product  ' md={4} sm={4} xs={4}>
                   <ul>
-                    <li> Product Id:</li>
+                    {/* <li> Product Id:</li> */}
                     <li> Posted On:</li>
                     <li> Expires On:</li>
                     <li> Product:</li>
@@ -133,7 +134,7 @@ const ProductScreen = ({ match, history }) => {
                 </Col>
                 <Col md={8} sm={8} xs={8}>
                   <ul>
-                    <li>{product._id}</li>
+                    {/* <li>{product._id}</li> */}
 
                     <li>{product?.createdAt?.substring(0, 10)}</li>
                     <li>{product?.expiresOn?.substring(0, 10)}</li>
@@ -189,11 +190,12 @@ const ProductScreen = ({ match, history }) => {
                           style={{ maxWidth: '100%', borderRadius: '5px' }}
                           id='w3review'
                           name='text'
-                          value={text}
-                          onChange={(e) => setText(e.target.value)}
+                          value={placeholderText}
+                          onChange={(e) => setPlaceholderText(e.target.value)}
                           rows='8'
                           cols='55'
                           required
+                          placeholder={placeholderText}
                         />
                       </li>
                     </Col>
