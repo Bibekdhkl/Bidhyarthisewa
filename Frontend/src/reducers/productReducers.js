@@ -30,6 +30,7 @@ export const productListReducer = (state = { products: [] }, action) => {
       }
 
     case PRODUCT_LIST_SUCCESS:
+      console.log("YAHA SAMMAN", action.payload);
       return {
         loading: false,
         products: action.payload.products,
@@ -60,11 +61,13 @@ export const productDetailsReducer = (
 
     case PRODUCT_DETAILS_SUCCESS:
       return {
+        ...state,
         loading: false,
         product: action.payload,
       }
     case PRODUCT_DETAILS_FAIL:
       return {
+        ...state,
         loading: false,
         error: action.payload,
       }

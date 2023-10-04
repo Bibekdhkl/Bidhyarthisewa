@@ -72,10 +72,10 @@ export const searchProducts = (keyword = '') => async (
       `/api/products/search/${keyword}`
     )
     console.log("=================")
-    console.log("in search products")
+    console.log("in search products", data)
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
-      payload: data,
+      payload: {products: data},
     })
   } catch (error) {
     dispatch({
