@@ -1,13 +1,17 @@
 import './index.css'
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useDispatch } from 'react-redux';
+import { searchProducts } from '../actions/productActions';
 
 const SearchBox = ({ history }) => {
   const [keyword, setKeyword] = useState("");
+  const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
     if (keyword.trim()) {
-      history.push(`/search/${keyword}`);
+      dispatch(searchProducts(keyword));
+      // history.push(`/search/${keyword}`);
     } else {
       history.push("/");
     }

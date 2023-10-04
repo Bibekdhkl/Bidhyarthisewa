@@ -8,7 +8,7 @@ import Message from "../components/Message";
 import Product from "../components/Product";
 import Paginate from "../components/Paginate";
 import Meta from "../components/Meta";
-import { listProducts } from "../actions/productActions";
+import { listProducts, searchProducts } from "../actions/productActions";
 import { PRODUCT_CREATE_RESET } from "../types/productConstants";
 import RecommendedProducts from "../components/RecommendedProducts";
 
@@ -20,6 +20,8 @@ const Landing = ({ match }) => {
   const { loading, error, products, page, pages } = productList;
   const userLogin = useSelector((state) => state.userLogin);
   const { userData } = userLogin;
+  // search from keyword
+  const searchList = useSelector((state) => state.searchProducts);
   // const [recommendedProducts, setRecommendedProducts] = useState([]);
 
   useEffect(() => {
@@ -37,6 +39,13 @@ const Landing = ({ match }) => {
     // setRecommendedProducts(recommendedProductsData);
     // }
   }, [dispatch, keyword, pageNumber]);
+
+  // useEffect(() => {
+  //   dispatch({ type: PRODUCT_CREATE_RESET });
+
+  //   dispatch(searchProducts(keyword));
+
+  // }, [dispatch, keyword]);
 
   
   

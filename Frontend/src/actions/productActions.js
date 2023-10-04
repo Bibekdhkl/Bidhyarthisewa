@@ -41,6 +41,38 @@ export const listProducts = (keyword = '', pageNumber = '') => async (
     const { data } = await axios.get(
       `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
     )
+
+    dispatch({
+      type: PRODUCT_LIST_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const searchProducts = (keyword = '') => async (
+  dispatch
+) => {
+  try {
+    dispatch({
+      type: PRODUCT_DETAILS_RESET,
+    })
+    dispatch({
+      type: PRODUCT_LIST_REQUEST,
+    })
+
+    const { data } = await axios.get(
+      `/api/products/search/${keyword}`
+    )
+    console.log("=================")
+    console.log("in search products")
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
@@ -63,6 +95,9 @@ export const listProductDetails = (id) => async (dispatch) => {
     })
 
     const { data } = await axios.get(`/api/products/${id}`)
+
+    console.log("=================")
+    console.log("helloworld")
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
       payload: data,
