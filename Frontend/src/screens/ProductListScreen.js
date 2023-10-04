@@ -50,7 +50,7 @@ const ProductListScreen = ({ history, match }) => {
             <thead>
               <tr>
                 <th>SN</th>
-                <th>ID</th>
+                {/* <th>ID</th> */}
                 <th>NAME</th>
                 <th>PRICE</th>
                 <th>CATEGORY</th>
@@ -63,7 +63,7 @@ const ProductListScreen = ({ history, match }) => {
               {products.map((product) => (
                 <tr key={product._id}>
                   <td>{i++}</td>
-                  <td>{product._id}</td>
+                  {/* <td>{product._id}</td> */}
                   <td>{product.name}</td>
                   <td>Rs {product.Cost.price}</td>
                   <td>{product.category}</td>

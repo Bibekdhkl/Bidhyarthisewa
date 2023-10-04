@@ -90,8 +90,8 @@ const Landing = ({ match }) => {
        {/* Recommended Products Section
        <h3 style={{ fontWeight: 800 }}>Recommended Products</h3>
       <RecommendedProducts products={recommendedProducts} /> */}
-  
-       <h3 style={{ fontWeight: 800, textAlign:"center"}}>👉Recommended/ Featured Section Coming Soon😉</h3>
+{/*   
+       <h3 style={{ fontWeight: 800, textAlign:"center"}}>👉Recommended/ Featured Section Coming Soon😉</h3> */}
   
     </>
   );
