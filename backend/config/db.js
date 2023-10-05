@@ -7,7 +7,7 @@ const connectDB = async () => {
     //   useNewUrlParser: true,
     //   useCreateIndex: true,
     // })
-    const dbURI = 'mongodb+srv://e-commerce-db-user:oRfexBd7teTuoOvF@cluster0.lvl1py8.mongodb.net/test'
+    const dbURI = process.env.MONGO_URI
 
     const options = {
       useNewUrlParser: true,
